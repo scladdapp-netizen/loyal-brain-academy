@@ -1,0 +1,291 @@
+.lwa {
+  --pine: #143028;
+  --leaf: #1e6a45;
+  --clay: #e07a3d;
+  --sand: #f4efe6;
+  --ink: #17211c;
+  --muted: #5d675f;
+  min-height: 100vh;
+  background: var(--sand);
+  color: var(--ink);
+  font-family: Manrope, "Segoe UI", sans-serif;
+}
+
+.lwa * { box-sizing: border-box; }
+.lwa img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lwa h1, .lwa h2, .lwa h3 {
+  font-family: Fraunces, Georgia, serif;
+  font-weight: 520;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.lwa p { margin: 0; }
+.lwa a { color: inherit; text-decoration: none; }
+.lwa button { font-family: inherit; cursor: pointer; }
+
+.lwa-kicker {
+  margin: 0 0 10px;
+  color: var(--clay);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.lwa-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 28px;
+  background: rgba(244, 239, 230, 0.92);
+  backdrop-filter: blur(12px);
+}
+.lwa-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.lwa-brand i {
+  width: 14px;
+  height: 14px;
+  background: var(--clay);
+  border-radius: 3px;
+}
+.lwa-nav nav { display: flex; align-items: center; gap: 22px; }
+.lwa-nav nav a { font-size: 0.92rem; font-weight: 500; }
+.lwa-nav nav button, .lwa-actions a, .lwa-actions button, .lwa-foot button {
+  border: 0;
+  border-radius: 999px;
+  background: var(--pine);
+  color: #f4efe6;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+.lwa-menu {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+}
+.lwa-menu span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  margin: 5px auto;
+  background: var(--ink);
+}
+
+.lwa-hero {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 28px 0 48px;
+  align-items: end;
+}
+.lwa-hero-copy p {
+  color: var(--leaf);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.lwa-hero h1 {
+  max-width: 11ch;
+  margin-top: 12px;
+  font-size: clamp(3.2rem, 5.6vw, 5.4rem);
+  line-height: 0.94;
+}
+.lwa-hero-copy span {
+  display: block;
+  max-width: 38ch;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+.lwa-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.lwa-actions a, .lwa-actions button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--pine);
+  color: #f4efe6;
+  font-weight: 650;
+}
+.lwa-actions .ghost {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+.lwa-hero-photos {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  grid-template-rows: 250px 180px;
+  gap: 10px;
+}
+.lwa-hero-photos img:first-child { grid-row: 1 / span 2; height: 100%; border-radius: 18px 18px 4px 18px; }
+.lwa-hero-photos img:nth-child(2) { border-radius: 18px 18px 18px 4px; }
+.lwa-hero-photos img:nth-child(3) { border-radius: 4px 18px 18px 18px; }
+
+.lwa-ribbon {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 28px;
+  background: var(--pine);
+  color: #f4efe6;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lwa-school, .lwa-programmes, .lwa-visit {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+.lwa-school {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: center;
+  padding: 80px 0;
+}
+.lwa-school img { height: 460px; border-radius: 20px; }
+.lwa-school h2 { font-size: clamp(2.3rem, 4vw, 3.5rem); line-height: 1; }
+.lwa-school > div > p:last-of-type, .lwa-visit p {
+  margin-top: 16px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.lwa-figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+.lwa-figures div { padding-top: 12px; border-top: 2px solid var(--clay); }
+.lwa-figures strong { display: block; font-family: Fraunces, Georgia, serif; font-size: 2rem; }
+.lwa-figures span { color: var(--muted); font-size: 0.82rem; }
+
+.lwa-head { margin-bottom: 22px; }
+.lwa-head h2, .lwa-visit h2 { font-size: clamp(2.3rem, 4vw, 3.4rem); line-height: 1; }
+.lwa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.lwa-grid article { position: relative; min-height: 280px; overflow: hidden; border-radius: 18px; }
+.lwa-grid img { position: absolute; inset: 0; }
+.lwa-grid div {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(12, 28, 22, 0.88));
+  color: #f4efe6;
+}
+.lwa-grid span { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #f0c9a4; }
+.lwa-grid h3 { margin-top: 4px; font-size: 2rem; }
+.lwa-grid p { margin-top: 6px; max-width: 36ch; color: rgba(244, 239, 230, 0.86); }
+
+.lwa-programmes { padding-bottom: 72px; }
+
+.lwa-term {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 28px;
+  padding: 48px 28px;
+  background: var(--pine);
+  color: #f4efe6;
+}
+.lwa-head.light .lwa-kicker { color: #f0c9a4; }
+.lwa-term > div:last-child { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.lwa-term article { padding: 18px; background: rgba(255, 255, 255, 0.06); border-radius: 14px; }
+.lwa-term time { color: var(--clay); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.lwa-term h3 { margin: 8px 0; font-size: 1.6rem; }
+.lwa-term p { color: rgba(244, 239, 230, 0.78); line-height: 1.5; }
+
+.lwa-quote { position: relative; height: 420px; }
+.lwa-quote img { position: absolute; inset: 0; }
+.lwa-quote blockquote {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  margin: 0;
+  padding: 40px;
+  background: linear-gradient(transparent 20%, rgba(12, 24, 20, 0.78));
+  color: #f4efe6;
+}
+.lwa-quote p { max-width: 16ch; font-family: Fraunces, Georgia, serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; }
+.lwa-quote cite { margin-top: 14px; font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; }
+
+.lwa-visit {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  padding: 72px 0;
+}
+.lwa-visit address {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 28px;
+  background: #fff;
+  border-radius: 18px;
+  font-style: normal;
+}
+.lwa-visit strong { font-size: 1.4rem; line-height: 1.3; }
+.lwa-visit address span, .lwa-visit address a { color: var(--muted); }
+
+.lwa-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  padding: 22px 28px 36px;
+  background: #10261f;
+  color: #f4efe6;
+}
+.lwa-foot p { color: rgba(244, 239, 230, 0.7); }
+.lwa-foot button { background: transparent; color: #f4efe6; padding: 0; }
+
+@media (max-width: 860px) {
+  .lwa-menu { display: inline-block; }
+  .lwa-nav nav {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 12px;
+    right: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    background: #fff;
+    border-radius: 14px;
+  }
+  .lwa-nav nav.open { display: flex; }
+  .lwa-nav nav a, .lwa-nav nav button { padding: 12px; text-align: left; }
+  .lwa-hero, .lwa-school, .lwa-term, .lwa-visit, .lwa-grid, .lwa-term > div:last-child {
+    grid-template-columns: 1fr;
+  }
+  .lwa-hero, .lwa-school, .lwa-programmes, .lwa-visit { width: min(100% - 28px, 1180px); }
+  .lwa-hero h1 { max-width: none; font-size: 3rem; }
+  .lwa-hero-photos { grid-template-rows: 220px 140px; }
+  .lwa-ribbon { overflow-x: auto; }
+  .lwa-ribbon p { white-space: nowrap; }
+  .lwa-school { padding: 48px 0; }
+  .lwa-school img { height: 280px; }
+  .lwa-figures { grid-template-columns: 1fr; }
+  .lwa-grid article { min-height: 240px; }
+  .lwa-term { padding: 32px 16px; }
+  .lwa-quote { height: 320px; }
+  .lwa-quote p { max-width: 14ch; }
+  .lwa-visit { padding: 48px 0; }
+}

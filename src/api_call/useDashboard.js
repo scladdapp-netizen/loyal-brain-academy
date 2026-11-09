@@ -1,0 +1,87 @@
+import { useState, useEffect, useCallback } from "react";
+
+const API_BASE = `${import.meta.env.VITE_API_BASE_URL}`;
+
+const useDashboard = (schoolId) => {
+  const [stats, setStats] = useState(null);
+  const [statsLoading, setStatsLoading] = useState(true);
+
+  const [activeSession, setActiveSession] = useState(null);
+  const [sessionLoading, setSessionLoading] = useState(true);
+
+  const [todayAttendance, setTodayAttendance] = useState(null);
+  const [attendanceLoading, setAttendanceLoading] = useState(true);
+
+  const [applicationsTrend, setApplicationsTrend] = useState(null);
+  const [applicationsLoading, setApplicationsLoading] = useState(true);
+
+  const [feePayments, setFeePayments] = useState(null);
+  const [feeLoading, setFeeLoading] = useState(true);
+  const [feeRange, setFeeRange] = useState("week");
+
+  const [genderData, setGenderData] = useState([]);
+  const [genderLoading, setGenderLoading] = useState(true);
+
+  const [enrollmentTrend, setEnrollmentTrend] = useState([]);
+  const [enrollmentLoading, setEnrollmentLoading] = useState(true);
+
+  const [recentActivities, setRecentActivities] = useState([]);
+  const [activitiesLoading, setActivitiesLoading] = useState(true);
+
+  const [monthlyFinancials, setMonthlyFinancials] = useState([]);
+  const [financialsLoading, setFinancialsLoading] = useState(true);
+
+  const fetchFeePayments = useCallback((range) => {
+    if (!schoolId) return;
+    setFeeLoading(true);
+    fetch(`${API_BASE}/api/schools/${schoolId}/fee-payments?range=${range}`)
+      .then((r) => r.json())
+      .then((res) => { if (res.success) setFeePayments(res.data); })
+      .catch(() => {})
+      .finally(() => setFeeLoading(false));
+  }, [schoolId]);
+
+  const changeFeeRange = (range) => {
+    setFeeRange(range);
+    fetchFeePayments(range);
+  };
+
+  useEffect(() => {
+    if (!schoolId) return;
+
+    const get = (url, setter, loadSetter) => {
+      loadSetter(true);
+      fetch(`${API_BASE}${url}`)
+        .then((r) => r.json())
+        .then((res) => { if (res.success) setter(res.data); })
+        .catch(() => {})
+        .finally(() => loadSetter(false));
+    };
+
+    get(`/api/schools/${schoolId}/stats`, setStats, setStatsLoading);
+    get(`/session/school/${schoolId}/active`, setActiveSession, setSessionLoading);
+    get(`/api/schools/${schoolId}/attendance/today`, setTodayAttendance, setAttendanceLoading);
+    get(`/api/schools/${schoolId}/gender-distribution`, setGenderData, setGenderLoading);
+    get(`/api/schools/${schoolId}/enrollment-trend`, setEnrollmentTrend, setEnrollmentLoading);
+    get(`/api/schools/${schoolId}/applications-monthly-trend`, setApplicationsTrend, setApplicationsLoading);
+    get(`/api/schools/${schoolId}/recent-activities?page=1&pageSize=4`, setRecentActivities, setActivitiesLoading);
+    get(`/api/schools/${schoolId}/monthly-financials`, setMonthlyFinancials, setFinancialsLoading);
+
+    fetchFeePayments("week");
+
+  }, [schoolId, fetchFeePayments]);
+
+  return {
+    stats, statsLoading,
+    activeSession, sessionLoading,
+    todayAttendance, attendanceLoading,
+    applicationsTrend, applicationsLoading,
+    feePayments, feeLoading, feeRange, changeFeeRange,
+    genderData, genderLoading,
+    enrollmentTrend, enrollmentLoading,
+    recentActivities, activitiesLoading,
+    monthlyFinancials, financialsLoading,
+  };
+};
+
+export default useDashboard;

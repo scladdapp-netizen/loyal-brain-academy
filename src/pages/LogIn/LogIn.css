@@ -1,0 +1,326 @@
+/* ── Login Page Layout ─────────────────────────────────────────────────── */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  background: #f5f4ff;
+  transition: background 0.3s;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .login-page {
+  background: #111111;
+}
+
+/* Left decorative panel */
+.login-left {
+  flex: 2;
+  display: none;
+  position: relative;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+@media (min-width: 900px) {
+  .login-left { display: block; }
+}
+
+/* Right — form panel */
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px 32px 32px;
+  background: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme="dark"] .login-right {
+  background: #111111;
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  padding: 40px 36px;
+}
+
+/* Brand row inside card (mobile only) */
+.login-card-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 900px) {
+  .login-card-brand { display: none; }
+}
+@media (max-width: 900px) {
+  .login-card { padding: 10px; }
+  .login-right { padding: 10px; }
+}
+
+.login-card-brand-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.login-card-brand-icon--logo {
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+
+.login-card-brand-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.login-card-brand-initial {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.login-card-brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .login-card-brand-name { color: #f0f0f0; }
+
+/* Header */
+.login-header { margin-bottom: 28px; }
+
+.login-header h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+  letter-spacing: -0.4px;
+}
+
+[data-theme="dark"] .login-header h2 { color: #f0f0f0; }
+
+.login-header p {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+[data-theme="dark"] .login-header p { color: #666; }
+
+/* Tab switcher — removed */
+
+/* Fields */
+.login-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+/* Actions row */
+.login-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.login-forgot {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.login-forgot:hover { color: #1a1a1a; }
+
+[data-theme="dark"] .login-forgot { color: #555; }
+[data-theme="dark"] .login-forgot:hover { color: #e0e0e0; }
+
+/* Footer links */
+.login-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid #f0eeff;
+}
+
+[data-theme="dark"] .login-footer { border-top-color: #252525; }
+
+.login-footer-sep {
+  color: #ccc;
+  font-size: 12px;
+}
+
+[data-theme="dark"] .login-footer-sep { color: #444; }
+
+.login-footer-link {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.login-footer-link:hover { color: #6c5ce7; }
+
+[data-theme="dark"] .login-footer-link { color: #666; }
+[data-theme="dark"] .login-footer-link:hover { color: #a29bfe; }
+
+/* Theme toggle button */
+.login-theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid #d0d0d0;
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  z-index: 10;
+}
+
+.login-theme-toggle:hover { border-color: #111; }
+
+[data-theme="dark"] .login-theme-toggle {
+  background: #111111;
+  border-color: #444;
+}
+
+[data-theme="dark"] .login-theme-toggle:hover { border-color: #fff; }
+
+/* Leadway Academic */
+.login-page--lwa {
+  background: #f4efe6;
+  color: #17211c;
+  font-family: Manrope, "Segoe UI", sans-serif;
+}
+.login-page--lwa .login-right { background: #f4efe6; }
+.login-page--lwa .login-card { max-width: 440px; padding: 48px 8px; }
+.login-page--lwa .login-header h2 {
+  font-family: Fraunces, Georgia, serif;
+  font-weight: 520;
+  font-size: 2.8rem;
+  letter-spacing: -0.03em;
+  color: #17211c;
+}
+.login-page--lwa .login-header p { color: #5d675f; font-size: 1rem; }
+.login-page--lwa .login-card-brand-icon {
+  width: 36px;
+  height: 36px;
+  background: #e07a3d;
+  border-radius: 8px;
+}
+.login-page--lwa .login-card-brand-initial { color: #f4efe6; font-size: 0.85rem; font-weight: 700; }
+.login-page--lwa .login-card-brand-name { font-weight: 700; letter-spacing: -0.03em; }
+.login-page--lwa .login-actions {
+  flex-direction: column-reverse;
+  align-items: stretch;
+}
+.login-page--lwa .login-actions .btn.primary {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 999px;
+  background: #143028;
+  border-color: #143028;
+}
+.login-page--lwa .login-actions .btn.primary:hover:not(:disabled) {
+  background: #1e6a45;
+  border-color: #1e6a45;
+}
+.login-page--lwa .login-forgot,
+.login-page--lwa .login-footer-link { color: #5d675f; }
+.login-page--lwa .login-forgot:hover,
+.login-page--lwa .login-footer-link:hover { color: #e07a3d; }
+.login-page--lwa .login-footer { border-top-color: rgba(20, 33, 28, 0.12); }
+.login-page--lwa .login-theme-toggle { border-color: rgba(20, 33, 28, 0.16); background: #fff; }
+
+.login-page--lwa .llp-grid-clip { display: none; }
+.login-page--lwa .llp-root { background: #143028; color: #f4efe6; }
+.login-page--lwa .llp-root::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  z-index: 1;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(12, 32, 24, 0.1) 0%, rgba(12, 32, 24, 0.78) 100%),
+    url("https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1600&q=80") center/cover;
+}
+.login-page--lwa .llp-content { z-index: 2; }
+.login-page--lwa .llp-mark {
+  width: 18px;
+  height: 18px;
+  background: #e07a3d;
+  border-radius: 4px;
+}
+.login-page--lwa .llp-title {
+  max-width: 9ch;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(3rem, 4vw, 4.2rem);
+  font-weight: 520;
+  letter-spacing: -0.03em;
+}
+.login-page--lwa .llp-sub { opacity: 0.9; font-size: 0.95rem; }
+
+[data-theme="dark"] .login-page--lwa,
+[data-theme="dark"] .login-page--lwa .login-right { background: #f4efe6; }
+[data-theme="dark"] .login-page--lwa .login-header h2,
+[data-theme="dark"] .login-page--lwa .login-card-brand-name { color: #17211c; }
+[data-theme="dark"] .login-page--lwa .login-header p,
+[data-theme="dark"] .login-page--lwa .login-forgot,
+[data-theme="dark"] .login-page--lwa .login-footer-link { color: #5d675f; }
+[data-theme="dark"] .login-page--lwa input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+[data-theme="dark"] .login-page--lwa textarea {
+  background: #fff !important;
+  color: #17211c !important;
+  border-color: rgba(20, 33, 28, 0.16) !important;
+}
+[data-theme="dark"] .login-page--lwa input::placeholder { color: #7d877f !important; }
+[data-theme="dark"] .login-page--lwa label { color: #5d675f !important; }
+[data-theme="dark"] .login-page--lwa .login-footer { border-top-color: rgba(20, 33, 28, 0.12); }
+
+@media (max-width: 900px) {
+  .login-page--lwa .login-right { padding: 28px 18px 40px; }
+  .login-page--lwa .login-card { padding: 12px 8px 24px; }
+  .login-page--lwa .login-header h2 { font-size: 2.3rem; }
+}

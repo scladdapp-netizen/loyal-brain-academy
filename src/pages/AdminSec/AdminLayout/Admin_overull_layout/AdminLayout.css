@@ -1,0 +1,73 @@
+/* AdminLayout.css */
+.AdminLayout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: #ffffff;
+  color: #111111;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="dark"] .AdminLayout {
+  background-color: #111111;
+  color: #e0e0e0;
+}
+
+.al_saidNContentSec {
+  display: flex;
+  flex: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  margin-top: 48px;
+}
+
+.al_content {
+  /* margin-top: 48px; */
+  margin-left: -7px;
+  flex: 1;
+  /* padding: 20px; */
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.AdminLayout .al_topbar,
+.AdminLayout .al_saidNContentSec {
+  transition: width 0.28s ease, right 0.28s ease;
+}
+
+.AdminLayout.assistant-open .al_topbar {
+  width: calc(100% - 400px);
+}
+
+.AdminLayout.assistant-open .al_saidNContentSec,
+.AdminLayout.assistant-open .slide-in-menu-container {
+  right: 400px;
+}
+
+/* Mobile styles */
+@media (max-width: 1000px) {
+  .al_content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .AdminLayout.assistant-open .al_topbar {
+    width: 100%;
+  }
+  .AdminLayout.assistant-open .al_saidNContentSec,
+  .AdminLayout.assistant-open .slide-in-menu-container {
+    right: 0;
+  }
+}

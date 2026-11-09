@@ -1,0 +1,364 @@
+/* ── Wrap ─────────────────────────────────────────────────────────────────── */
+.subjectAssessments { max-width: 100%; }
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.assessmentsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.assessmentsHeaderLeft { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.assessmentsTitle    { margin: 0; font-size: 20px; font-weight: 800; color: #111111; letter-spacing: -0.02em; }
+.assessmentsSubtitle { margin: 0; font-size: 12px; color: #888888; font-weight: 600; }
+
+/* ── Student cell ─────────────────────────────────────────────────────────── */
+.sa-student-name { font-weight: 700; font-size: 13px; color: #111111; margin: 0 0 2px; }
+.sa-student-id   { font-size: 11px; color: #888888; font-family: monospace; margin: 0; }
+
+/* ── Score cell ───────────────────────────────────────────────────────────── */
+.sa-score-empty { color: #cccccc; }
+.sa-score-zero  { color: #d97706; font-weight: 700; }
+.sa-score-total { font-weight: 800; color: #111111; }
+.sa-no-score    { font-size: 11px; color: #cc3333; font-weight: 600; }
+
+/* ── Detail panel ─────────────────────────────────────────────────────────── */
+.sa-panel {
+  display: flex; flex-direction: column;
+  flex: 1; min-height: 0; overflow: hidden; background: #ffffff;
+}
+
+.sa-panel-header {
+  position: relative; padding: 22px 24px 20px;
+  background: #111111; flex-shrink: 0; overflow: hidden;
+}
+
+.sa-panel-header::before {
+  content: ""; position: absolute;
+  width: 120px; height: 120px; border-radius: 50%;
+  border: 18px solid rgba(255,255,255,0.05);
+  top: -40px; right: -24px; pointer-events: none;
+}
+
+.sa-panel-header-deco {
+  position: absolute; width: 60px; height: 60px; border-radius: 50%;
+  border: 10px solid rgba(255,255,255,0.04);
+  bottom: -20px; left: -12px; pointer-events: none;
+}
+
+.sa-panel-header-content {
+  position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 14px;
+}
+
+.sa-panel-header-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18);
+  display: flex; align-items: center; justify-content: center;
+  color: #ffffff; flex-shrink: 0;
+}
+
+.sa-panel-header-text h2 { margin: 0 0 3px; font-size: 14px; font-weight: 800; color: #ffffff; letter-spacing: -0.01em; }
+.sa-panel-header-text p  { margin: 0; font-size: 12px; color: rgba(255,255,255,0.55); }
+
+.sa-panel-body {
+  flex: 1; min-height: 0; overflow-y: auto; padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.sa-panel-body::-webkit-scrollbar { width: 3px; }
+.sa-panel-body::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 2px; }
+
+.sa-panel-footer {
+  display: flex; justify-content: flex-end; gap: 10px;
+  padding: 14px 24px; border-top: 1px solid #e8e8e8;
+  background: #f7f7f7; flex-shrink: 0;
+}
+
+/* ── Info rows ────────────────────────────────────────────────────────────── */
+.sa-info-row { display: flex; flex-direction: column; gap: 2px; }
+.sa-info-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #888888; }
+.sa-info-value { font-size: 13px; font-weight: 700; color: #111111; }
+
+.sa-divider { height: 1px; background: #f0f0f0; }
+
+/* ── Score rows ───────────────────────────────────────────────────────────── */
+.sa-score-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px; background: #f7f7f7; border: 1px solid #e8e8e8;
+  border-radius: 8px; font-size: 13px;
+}
+
+.sa-score-row-label { font-weight: 700; color: #111111; }
+.sa-score-row-max   { font-size: 11px; color: #888888; font-weight: 600; }
+.sa-score-row-value { font-weight: 800; color: #111111; }
+
+.sa-score-total-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 12px; background: #f0f0f0; border: 1px solid #e8e8e8;
+  border-radius: 8px; font-size: 14px; font-weight: 800; color: #111111;
+}
+
+.sa-no-scores {
+  padding: 12px 14px; background: #f7f7f7; border: 1px solid #e8e8e8;
+  border-radius: 8px; font-size: 13px; color: #888888; font-weight: 600;
+}
+
+/* ── Edit form ────────────────────────────────────────────────────────────── */
+.sa-edit-title {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: #888888;
+  padding-bottom: 8px; border-bottom: 1px solid #f0f0f0;
+  margin: 0 0 4px; display: block;
+}
+
+.sa-field { display: flex; flex-direction: column; gap: 4px; }
+.sa-field-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #888888; }
+.sa-field-max   { color: #cccccc; font-weight: 400; text-transform: none; }
+
+.sa-field-input {
+  padding: 8px 12px; border-radius: 8px; border: 1px solid #e8e8e8;
+  font-size: 13px; font-weight: 600; color: #111111; background: #fafafa;
+  outline: none; transition: border-color 0.15s; width: 100%; box-sizing: border-box;
+}
+.sa-field-input:focus { border-color: #111111; background: #ffffff; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .assessmentsHeader { flex-direction: column; gap: 14px; }
+}
+
+/* ── Dark theme ───────────────────────────────────────────────────────────── */
+[data-theme="dark"] .assessmentsTitle    { color: #f0f0f0; }
+[data-theme="dark"] .assessmentsSubtitle { color: #555555; }
+[data-theme="dark"] .assessmentsHeader   { border-bottom-color: #2a2a2a; }
+[data-theme="dark"] .sa-student-name { color: #f0f0f0; }
+[data-theme="dark"] .sa-panel { background: #1a1a1a; }
+[data-theme="dark"] .sa-panel-header { background: #0a0a0a; }
+[data-theme="dark"] .sa-panel-body { background: #1a1a1a; }
+[data-theme="dark"] .sa-panel-body::-webkit-scrollbar-thumb { background: #2a2a2a; }
+[data-theme="dark"] .sa-panel-footer { background: #1e1e1e; border-top-color: #2a2a2a; }
+[data-theme="dark"] .sa-info-value { color: #f0f0f0; }
+[data-theme="dark"] .sa-divider { background: #2a2a2a; }
+[data-theme="dark"] .sa-score-row { background: #252525; border-color: #2a2a2a; }
+[data-theme="dark"] .sa-score-row-label { color: #f0f0f0; }
+[data-theme="dark"] .sa-score-row-value { color: #f0f0f0; }
+[data-theme="dark"] .sa-score-total-row { background: #2a2a2a; border-color: #3a3a3a; color: #f0f0f0; }
+[data-theme="dark"] .sa-no-scores { background: #252525; border-color: #2a2a2a; color: #555555; }
+[data-theme="dark"] .sa-field-input { background: #252525; border-color: #3a3a3a; color: #e0e0e0; }
+[data-theme="dark"] .sa-field-input:focus { border-color: #f0f0f0; background: #2a2a2a; }
+
+/* ── Mobile: show data-label on all cells inside the assessments table ─────── */
+@media (max-width: 640px) {
+
+  /* Show the column label as a prefix on every cell */
+  .subjectAssessments .smart-table td::before {
+    display: block;
+    content: attr(data-label);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #888888;
+    margin-bottom: 4px;
+  }
+
+  /* Give editable cells a little breathing room so label + input don't feel cramped */
+  .subjectAssessments .smart-table td {
+    padding: 12px 14px;
+  }
+
+  /* Inline cell: stack label on top, value/input below */
+  .subjectAssessments .sa-inline-cell {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    cursor: cell;
+    min-height: unset;
+    width: 100%;
+  }
+
+  /* In active (edit) mode, input takes full width */
+  .subjectAssessments .sa-inline-cell.sa-cell-active .rsi-inline-edit-wrap {
+    width: 100%;
+  }
+
+  .subjectAssessments .sa-inline-cell.sa-cell-active .rsi-inline-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ── Dark theme mobile labels ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  [data-theme="dark"] .subjectAssessments .smart-table td::before {
+    color: #555555;
+  }
+}
+
+.sa-inline-cell {
+  min-width: 48px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: cell;
+  border-radius: 4px;
+  transition: background 0.1s, outline 0.1s;
+  user-select: none;
+}
+
+.sa-inline-cell:hover {
+  background: #f0f7ff;
+  outline: 1px dashed #93c5fd;
+  outline-offset: -1px;
+}
+
+.sa-inline-cell.sa-cell-active {
+  background: #f8faff;
+  outline: none;
+  cursor: default;
+}
+
+/* Reuse rsi inline edit classes for input/error */
+.rsi-inline-edit-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.rsi-inline-input {
+  width: 70px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 2px solid #3b82f6;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111111;
+  background: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  -moz-appearance: textfield;
+}
+.rsi-inline-input::-webkit-inner-spin-button,
+.rsi-inline-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.rsi-inline-input.rsi-input-error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.15); }
+
+.rsi-inline-error {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ef4444;
+  white-space: nowrap;
+}
+
+.rsi-cell-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rsi-cell-spinner {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  border-top-color: #3b82f6;
+  animation: sa-spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes sa-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Dark theme inline ───────────────────────────────────────────────────── */
+[data-theme="dark"] .sa-inline-cell:hover {
+  background: #0d1f3c;
+  outline-color: #1d4ed8;
+}
+[data-theme="dark"] .sa-inline-cell.sa-cell-active { background: #111827; }
+[data-theme="dark"] .rsi-inline-input {
+  background: #1e1e1e;
+  border-color: #3b82f6;
+  color: #e0e0e0;
+}
+[data-theme="dark"] .rsi-cell-spinner {
+  border-color: #3a3a3a;
+  border-top-color: #60a5fa;
+}
+
+@media (max-width: 768px) {
+  .subjectAssessments .table-wrap {
+    overflow-x: auto;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .subjectAssessments .smart-table-container .smart-table {
+    display: table;
+    width: max-content;
+    min-width: 100% !important;
+    border-collapse: collapse;
+  }
+
+  .subjectAssessments .smart-table thead { display: table-header-group; }
+
+  .subjectAssessments .smart-table tbody {
+    display: table-row-group;
+  }
+
+  .subjectAssessments .smart-table-container .smart-table tbody tr {
+    display: table-row;
+    width: auto;
+    max-width: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .subjectAssessments .smart-table-container .smart-table th,
+  .subjectAssessments .smart-table-container .smart-table td,
+  .subjectAssessments .smart-table-container .smart-table td.st-card-title,
+  .subjectAssessments .smart-table-container .smart-table td.st-card-sub,
+  .subjectAssessments .smart-table-container .smart-table td.st-card-field,
+  .subjectAssessments .smart-table-container .smart-table td.st-card-badge {
+    display: table-cell;
+    position: static;
+    width: auto;
+    max-width: none;
+    padding: 11px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  .subjectAssessments .smart-table-container .smart-table th {
+    font-size: 11px;
+    font-weight: 700;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .subjectAssessments .smart-table-container .smart-table td[data-label]::before { content: none; }
+
+  .subjectAssessments .sa-student-name {
+    font-size: 13px;
+    font-weight: 700;
+  }
+}
+
+[data-theme="dark"] .subjectAssessments .table-wrap {
+  background: #1e1e1e;
+  border-color: #2a2a2a;
+}
