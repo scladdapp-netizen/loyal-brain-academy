@@ -91,7 +91,7 @@ export default function Landing() {
       <main id="top">
         <section className="lwa-hero">
           <div className="lwa-hero-copy">
-            <p>Maitama, Abuja · Day school</p>
+            
             <h1>Lead the way, then bring someone with you.</h1>
             <span>
               Leadway Academic teaches nursery through senior school. The work is serious.
